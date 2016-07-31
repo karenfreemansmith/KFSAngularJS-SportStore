@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html>
-<head ng-app="sporstore">
+<html ng-app="sportstore">
+<head>
   <title>SPORTSTORE</title>
   <script src="angular.js"></script>
   <link href="bootstrap.css" rel="stylesheet">
   <link href="bootstrap-theme.css" rel="stylesheet">
   <script>
     angular.module("sportstore", []);
-    </script>
+  </script>
+  <script src="controllers/sportstore.js"></script>
 </head>
-<body>
+<body ng-controller="sportstoreCtrl">
   <div class="navbar navbar-inverse">
     <a class="navbar-brand" href="#">SPORTSTORE</a>
   </div>
@@ -18,7 +19,15 @@
       Categories go here
     </div>
     <div class="col-xs-8">
-      Products go here
+      <div class="well" ng-repeat="item in data.products">
+        <h3>
+          <strong>{{item.name}}</strong>
+          <span class="pull-righ label label-primary">
+            {{item.price | currency}}
+          </span>
+        </h3>
+        <span class="lead">{{item.description}}</span>
+      </div>
     </div>
 </body>
 </html>
